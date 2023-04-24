@@ -13,17 +13,19 @@ contract("Wax", async(accounts) => {
             accountOne
         ] = accounts;
     
-    console.log('Deployer: ', owner);
+    beforeEach(async() => {
+        this.wax = await wax.new(1000000000);
+    })
 
     it("All token should be in first account", async () => {
-        let instance = await wax.deployed();
+        let instance = this.wax;
         let totalSupply = await instance.totalSupply();
         expect(await instance.balanceOf(owner)).to.be.bignumber.equal(totalSupply);
     });
 
     it("Is possible send token", async () => {
         const sendToken = 1000;
-        let instance = await wax.deployed();
+        let instance = this.wax;
         let totalSupply = await instance.totalSupply();
 
         await expect(instance.balanceOf(owner)).to.eventually.be.a.bignumber.equal(totalSupply);
