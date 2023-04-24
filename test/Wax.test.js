@@ -1,11 +1,9 @@
-const chai = require('chai');
+"use strict"
+
 const BN = web3.utils.BN;
-const chainBN = require('chai-bn')(BN);
-chai.use(chainBN);
-const chaiAsPromised = require('chai-as-promised');
-chai.use(chaiAsPromised);
-const expect = chai.expect;
+const chai = require("./setup_chai.js");
 var wax = artifacts.require("Wax.sol");
+const expect = chai.expect;
 
 contract("Wax", async(accounts) => {
     const [
