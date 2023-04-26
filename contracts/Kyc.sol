@@ -8,11 +8,11 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract Kyc is Ownable {
     mapping(address => bool) allowed;
 
-    function setKyc(address _address) public {
+    function setKyc(address _address) public onlyOwner{
         allowed[_address] = true;
     }
 
-    function removeKyc(address _address) public {
+    function removeKyc(address _address) public onlyOwner{
         allowed[_address] = false;
     }
 
